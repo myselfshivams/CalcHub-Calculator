@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CalcHub by Shivam</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+
+   
+    <meta name="keywords" content="Calculator, Shivam, JavaScript, HTML Calculator, JavaScript Calculator, CalcHub, myselfshivams">
+</head>
+
+<body>
+    <div class="toggle-container">
+        <label class="toggle-switch">
+            <input type="checkbox" id="toggle-mode" />
+            <span class="toggle-slider"></span>
+        </label>
+    </div>
+    <div class="container">
+        <h1>
+            <a style="text-decoration: none; color: #c797ef; margin-left: 1.25rem; cursor: pointer;" onclick="location.reload();">CalcHub-CALCULATOR</a>
+          
+        </h1>
+        <div class="calculator">
+            <input type="text" name="screen" id="answer" readonly>
+            <table>
+                <tr>
+                    <td><button>(</button></td>
+                    <td><button>)</button></td>
+                    <td>
+                        <div class="row">
+                            <div class="col">
+                                <button style="background-color: #f01600; font-weight: bold; color: #54c8e8; width: 8vw;" onclick="clearAll()">C</button>
+                            </div>
+                            <div class="col">
+                                <button style="background-color: #f01600; font-weight: bold; color: #54c8e8;width: 8vw;" onclick="deleteLastEntry()">CE</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td><button>%</button></td>
+                </tr>
+                <tr>
+                    <td><button>7</button></td>
+                    <td><button>8</button></td>
+                    <td><button>9</button></td>
+                    <td><button>X</button></td>
+                </tr>
+                <tr>
+                    <td><button>4</button></td>
+                    <td><button>5</button></td>
+                    <td><button>6</button></td>
+                    <td><button>-</button></td>
+                </tr>
+                <tr>
+                    <td><button>1</button></td>
+                    <td><button>2</button></td>
+                    <td><button>3</button></td>
+                    <td><button>+</button></td>
+                </tr>
+                <tr>
+                    <td><button>0</button></td>
+                    <td><button style="font-weight: bold;">.</button></td>
+                    <td><button>/</button></td>
+                    <td><button style="background-color: #25db72; font-weight: bold; color: #ecf0f1;">=</button></td>
+                </tr>
+            </table>
+            <hr style="max-width: 50vw;">
+           
+        </div>
+    </div>
+    <div id="bar1" class="bars"></div>
+    <div id="bar2" class="bars"></div>
+    <div id="turn">
+        PLEASE RE-SIZE YOUR WINDOW
+    </div>
+</body>
+
+
+<script src="./scripts/script.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70447982-5"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-70447982-5');
+</script>
+<script>
+    const toggleMode = document.getElementById('toggle-mode');
+    const container = document.querySelector('.container');
+
+    toggleMode.addEventListener('change', function () {
+        container.classList.toggle('dark-mode');
+    });
+
+    document.addEventListener('keydown', function (event) {
+        handleKeyPress(event.key);
+    });
+
+    function handleKeyPress(key) {
+  
+        if (key === 'Enter') {
+            handleButtonPress('=');
+        }
+      
+        if (key === 'Delete' || key === 'Backspace') {
+            handleButtonPress('CE');
+        }
+   
+        if (/[0-9]/.test(key)) {
+            handleButtonPress(key);
+        }
+ 
+        if (/[\+\-\*\/%]/.test(key)) {
+            handleButtonPress(key);
+        }
+    }
+    function handleButtonPress(value) {
+        const button = document.querySelector(`button[value="${value}"]`);
+        if (button) {
+            button.click();
+        }
+    }
+</script>
+</html>
