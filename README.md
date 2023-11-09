@@ -1,2 +1,2 @@
 # CalcHub-Calculator
-A Simple and Intuitive Calculato
+A Simple and Intuitive Calculator
